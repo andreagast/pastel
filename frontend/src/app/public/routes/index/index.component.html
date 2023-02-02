@@ -1,0 +1,44 @@
+<div class="flex flex-col gap-6 mt-4" *ngIf="!loading; else loadingTpl">
+  <div *ngIf="fresh && fresh.length > 0">
+    <div class="font-bold italic text-lg">Freshly baked!</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid- gap-4">
+      <app-sale-display
+        *ngFor="let sale of fresh"
+        [sale]="sale"
+        [products]="products"
+        priceType="full"
+        (saleClick)="onSaleClick($event)"
+      ></app-sale-display>
+    </div>
+  </div>
+  <div *ngIf="half && half.length > 0">
+    <div class="font-bold italic text-lg">Disconted!</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid- gap-4">
+      <app-sale-display
+        *ngFor="let sale of half"
+        [sale]="sale"
+        [products]="products"
+        priceType="half"
+        (saleClick)="onSaleClick($event)"
+      ></app-sale-display>
+    </div>
+  </div>
+  <div *ngIf="stale && stale.length > 0">
+    <div class="font-bold italic text-lg">Bargain!</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid- gap-4">
+      <app-sale-display
+        *ngFor="let sale of stale"
+        [sale]="sale"
+        [products]="products"
+        priceType="stale"
+        (saleClick)="onSaleClick($event)"
+      ></app-sale-display>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="w-full h-full flex flex-row items-center justify-center">
+    <h1>Caricamento...</h1>
+  </div>
+</ng-template>

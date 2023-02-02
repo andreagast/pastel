@@ -1,0 +1,12 @@
+<ul class="flex flex-row gap-3 py-3">
+  <li>
+    <a routerLink="/backoffice" routerLinkActive="font-bold" [routerLinkActiveOptions]="{ exact: true }">Sales</a>
+  </li>
+  <li>
+    <a routerLink="/backoffice/products" routerLinkActive="font-bold" [routerLinkActiveOptions]="{ exact: true }">
+      Products
+    </a>
+  </li>
+</ul>
+<hr />
+<router-outlet></router-outlet>

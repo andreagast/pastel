@@ -1,0 +1,14 @@
+<div
+  class="border border-gray-300 p-4 h-full flex flex-row items-center rounded-md group cursor-pointer"
+  (click)="onClick()"
+>
+  <div class="flex-grow">
+    <h2>{{ productName }}</h2>
+    <span class="font-bold">{{ price }} €</span>
+    <span class="text-red-500 font-bold ml-3" *ngIf="priceType === 'half'">-20%</span>
+    <span class="text-red-500 font-bold ml-3" *ngIf="priceType === 'stale'">-80%</span>
+  </div>
+  <div>
+    <lucide-icon name="arrow-right-circle" class="group-hover:text-blue-500"></lucide-icon>
+  </div>
+</div>

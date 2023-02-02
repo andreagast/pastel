@@ -1,0 +1,37 @@
+<div class="p-4">
+  <h1 class="font-bold">Add a product to sale</h1>
+  <hr />
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="my-4">
+      <label for="product_id">Product:</label>
+      <select
+        id="product_id"
+        formControlName="product_id"
+        class="border border-gray-100 focus:border-gray-300 outline-none rounded block w-full"
+      >
+        <option *ngFor="let product of products" [value]="product.id">{{ product.name }}</option>
+      </select>
+    </div>
+    <div class="my-4">
+      <label for="qty">Quantity:</label>
+      <input
+        type="number"
+        id="qty"
+        formControlName="qty"
+        min="1"
+        class="border border-gray-100 focus:border-gray-300 outline-none rounded"
+      />
+    </div>
+    <button
+      type="submit"
+      class="px-4 py-2 border border-blue-400 text-white bg-blue-400 rounded hover:bg-blue-700 hover:border-bg-700 disabled:border-gray-100 disabled:bg-gray-100"
+      [disabled]="form.pristine || form.invalid || loading"
+    >
+      Create
+    </button>
+    <div *ngIf="errorMessage" class="text-red-500">
+      <hr />
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>

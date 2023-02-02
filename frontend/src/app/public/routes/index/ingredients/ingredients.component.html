@@ -1,0 +1,20 @@
+<div class="mt-4" *ngIf="!loading; else loadingTpl">
+  <a routerLink="/" class="text-underline text-sm flex flex-row items-center gap-2">
+    <lucide-icon name="chevron-left" class="!w-4 !h-4"></lucide-icon>
+    <span>Go back</span>
+  </a>
+  <hr class="my-3" />
+  <h1 class="font-bold text-lg mb-3">{{ product?.name }}</h1>
+  <span>Ingredients:</span>
+  <ul class="list-disc list-inside">
+    <li *ngFor="let ingredient of product?.ingredients ?? []">
+      {{ ingredient.name }} - {{ ingredient.qty }} {{ ingredient.um }}
+    </li>
+  </ul>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="w-full h-full flex flex-row items-center justify-center">
+    <h1>Caricamento...</h1>
+  </div>
+</ng-template>
